@@ -1,5 +1,8 @@
 # DevOps Capstone Project
 
+## Description
+This project is the final step to achieve before obtaining the IBM DevOps and Software Engineering Professional Certificate. It is about developing account microservice to keep track of the customers on your e-commerce website along other predefined microservices which interact through RESTful APIs.
+
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python 3.9](https://img.shields.io/badge/Python-3.9-green.svg)](https://shields.io/)
 
