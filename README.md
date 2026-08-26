@@ -1,6 +1,6 @@
 # DevOps Capstone Project
 
-![Build Status](https://github.com/adam1618x/devops-capstone-project/.github/workflows/ci-build.yaml/badge.svg)
+[![CI Build](https://github.com/adam1618x/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)](https://github.com/adam1618x/devops-capstone-project/actions/workflows/ci-build.yaml)
 
 ## Description
 This project is the final step to achieve before obtaining the IBM DevOps and Software Engineering Professional Certificate. It is about developing account microservice to keep track of the customers on your e-commerce website along other predefined microservices which interact through RESTful APIs.
