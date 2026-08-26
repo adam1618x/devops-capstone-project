@@ -159,3 +159,26 @@ class TestAccountService(TestCase):
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         data = resp.get_json()
         self.assertEqual(len(data), 0)
+
+    def test_update_account(self):
+        """It should update an Account"""
+        #Create the account
+        account = self._create_accounts(1)[0]
+        response = self.client.post(
+            BASE_URL,
+            json=account.serialize(),
+            content_type="application/json"
+        )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        #Update the account
+        new_account = response.get_json()
+        new_account["name"] = "Adam"
+        response = self.client.put(
+            f"{BASE_URL}/{account.id}",
+            json=new_account,
+            content_type="application/json"
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        updated_account = response.get_json()
+        self.assertEqual(updated_account["name"], "Adam")
+
