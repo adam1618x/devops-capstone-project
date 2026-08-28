@@ -22,6 +22,7 @@ BASE_URL = "/accounts"
 
 HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 
+
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
@@ -132,7 +133,7 @@ class TestAccountService(TestCase):
     def test_get_account(self):
         """It should Read a single Account"""
         account = self._create_accounts(1)[0]
-        resp = self.client.get(f"{BASE_URL}/{account.id}", content_type="application/json") 
+        resp = self.client.get(f"{BASE_URL}/{account.id}", content_type="application/json")
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         data = resp.get_json()
         self.assertEqual(data["name"], account.name)
@@ -145,22 +146,23 @@ class TestAccountService(TestCase):
     def test_list_all_accounts(self):
         """It should List all Account"""
         account = self._create_accounts(5)
-        resp = self.client.get(f"{BASE_URL}", content_type="application/json") 
+        resp = self.client.get(f"{BASE_URL}", content_type="application/json")
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         data = resp.get_json()
+        self.assertEqual(len(data), 5)
         self.assertEqual(len(account), 5)
 
     def test_list_all_accounts_empty(self):
         """It should return an empty accounts list"""
         account = []
-        resp = self.client.get(f"{BASE_URL}", content_type="application/json") 
+        resp = self.client.get(f"{BASE_URL}", content_type="application/json")
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         data = resp.get_json()
         self.assertEqual(len(data), 0)
 
     def test_update_account(self):
-        """It should update an Account"""
-        #Create the account
+        """It should update an Account """
+        # Create the account
         account = self._create_accounts(1)[0]
         response = self.client.post(
             BASE_URL,
@@ -168,7 +170,7 @@ class TestAccountService(TestCase):
             content_type="application/json"
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        #Update the account
+        # Update the account
         new_account = response.get_json()
         new_account["name"] = "Adam"
         response = self.client.put(
