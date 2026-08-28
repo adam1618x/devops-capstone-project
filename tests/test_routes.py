@@ -159,6 +159,7 @@ class TestAccountService(TestCase):
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         data = resp.get_json()
         self.assertEqual(len(data), 0)
+        self.assertEqual(len(account), 0)
 
     def test_update_account(self):
         """It should update an Account """
